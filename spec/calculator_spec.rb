@@ -22,5 +22,13 @@ RSpec.describe Calculator do
     it 'returns summation of multiple number with dynamic separation' do
       expect(Calculator.string_addition("//;\n1;2")).to eq(3)
     end
+
+    it 'returns error message for negative numbers' do
+      expect { Calculator.string_addition("1,-2,3") }
+      .to raise_error do |error|
+        expect(error).to be_a(RuntimeError)
+        expect(error.message).to eq("negative numbers not allowed -2")
+      end
+    end    
   end
 end
