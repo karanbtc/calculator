@@ -1,13 +1,18 @@
 require 'pry-nav'
 class Calculator
   def self.string_addition(string_number)
-    if string_number.start_with?("//")
-      dynamic_string = string_number[2..-1].split("\n")
-      spearator = dynamic_string[0]
-      str = dynamic_string[1].gsub(spearator, ',')
-      return str.split(',').map(&:to_i).sum.to_i
+    string_number = separator_and_string(string_number)
+    return string_number.split(',').map(&:to_i).sum.to_i
+  end
+
+  def self.separator_and_string(str)
+    if str.start_with?("//")
+      dynamic_string = str[2..-1].split("\n")
+      separator = dynamic_string[0]
+      str = dynamic_string[1]
     else
-      return string_number.gsub(/\n/, ',').split(',').map(&:to_i).sum.to_i
+      separator = /\n/
     end
+    return str.gsub(separator, ',')
   end
 end 
