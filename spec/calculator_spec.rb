@@ -14,5 +14,9 @@ RSpec.describe Calculator do
     it 'returns summation of multiple number' do
       expect(Calculator.string_addition("1,5")).to eq(6)
     end
+
+    it 'returns summation of multiple number with multiple separation' do
+      expect(Calculator.string_addition("1\n2,3")).to eq(6)
+    end
   end
 end
