@@ -1,8 +1,10 @@
-require 'pry-nav'
 class Calculator
   def self.string_addition(string_number)
     string_number = separator_and_string(string_number)
-    return string_number.split(',').map(&:to_i).sum.to_i
+    values = string_number.split(',').map(&:to_i)
+    negative_numbers = values.select(&:negative?)
+    raise "negative numbers not allowed #{negative_numbers.join(",")}" if !negative_numbers.nil? && negative_numbers.any?
+    return values.sum
   end
 
   def self.separator_and_string(str)
@@ -15,4 +17,4 @@ class Calculator
     end
     return str.gsub(separator, ',')
   end
-end 
+end
