@@ -20,7 +20,7 @@ RSpec.describe Calculator do
     end
     
     it 'returns summation of multiple number with dynamic separation' do
-      expect(Calculator.string_addition("//;\n1;2")).to eq(6)
+      expect(Calculator.string_addition("//;\n1;2")).to eq(3)
     end
   end
 end
