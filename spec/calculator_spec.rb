@@ -15,8 +15,12 @@ RSpec.describe Calculator do
       expect(Calculator.string_addition("1,5")).to eq(6)
     end
 
-    it 'returns summation of multiple number with multiple separation' do
+    it 'returns summation of multiple number with multiple static separation' do
       expect(Calculator.string_addition("1\n2,3")).to eq(6)
+    end
+    
+    it 'returns summation of multiple number with dynamic separation' do
+      expect(Calculator.string_addition("//;\n1;2")).to eq(6)
     end
   end
 end
